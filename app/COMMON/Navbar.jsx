@@ -17,6 +17,8 @@ export default function Navbar() {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+    const [showServices, setShowServices] = useState(false);
+
 
     return (
         <nav className="w-full fixed top-0 left-0 z-50 bg-transparent ">
@@ -34,21 +36,25 @@ export default function Navbar() {
                     />
 
                     {/* Desktop Menu */}
-                    <ul className="desktop-menu items-center gap-8 text-black font-medium text-[18px]">
+                    <ul className="desktop-menu hidden lg:flex items-center gap-8 text-black font-medium text-[18px]">
                         <li><Link href="/">Home</Link></li>
                         <li><Link href="/about">About Us</Link></li>
 
+                        {/* SERVICES DROPDOWN FIXED */}
                         <li className="relative group cursor-pointer">
                             <span className="flex items-center gap-1">
                                 Services <IoIosArrowDown />
                             </span>
 
                             {/* Dropdown */}
-                            <div className="absolute left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100  
-                bg-white/80 backdrop-blur-lg p-4 rounded-lg mt-3 min-w-[180px] z-50 transition">
-                                <Link href="/service/dj-for-school" className="block py-2 px-3 hover:text-[#ffff]">DJ Services</Link>
-                                <Link href="/wedding" className="block py-2 px-3 hover:text-[#ffff]">Wedding</Link>
-                                <Link href="/party" className="block py-2 px-3 hover:text-[#ffff]">Party</Link>
+                            <div className="absolute left-[-2px] top-full opacity-0 pointer-events-none 
+            group-hover:opacity-100 group-hover:pointer-events-auto
+            bg-white/90 backdrop-blur-xl p-4 rounded-lg mt-o min-w-[200px] shadow-lg transition-all">
+
+                                <Link href="/service/dj-for-school" className="block py-2 px-3 hover:bg-black hover:text-white rounded-md">DJ Services</Link>
+                                <Link href="/service/wedding" className="block py-2 px-3 hover:bg-black hover:text-white rounded-md">Wedding</Link>
+                                <Link href="/service/party" className="block py-2 px-3 hover:bg-black hover:text-white rounded-md">Party</Link>
+                                <Link href="/service/corporate-events" className="block py-2 px-3 hover:bg-black hover:text-white rounded-md">Corporate Events</Link>
                             </div>
                         </li>
 
@@ -56,6 +62,7 @@ export default function Navbar() {
                         <li><Link href="/blogs">Blog</Link></li>
                         <li><Link href="/contact">Contact Us</Link></li>
                     </ul>
+
                 </div>
 
                 {/* RIGHT BUTTONS */}
@@ -87,30 +94,52 @@ export default function Navbar() {
             )}
 
             {/* LEFT SLIDE SIDEBAR */}
+            {/* LEFT SLIDE SIDEBAR */}
             <div
-                className={`fixed top-20 left-0 h-full w-full bg-white shadow-xl z-50 p-8 pt-10
+                className={`border-t border-t-neutral-300 mt-2 fixed top-20 left-0 h-full w-full bg-white shadow-xl z-50 p-8 pt-5
     transform transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
-    ${open ? "translate-x-0" : "-translate-x-full"}`}
-            >
+    ${open ? "translate-x-0" : "-translate-x-full"}`}>
+
+
                 <div className="flex flex-col space-y-7 text-black text-[18px] font-medium">
 
                     <Link href="/" onClick={() => setOpen(false)}>Home</Link>
                     <Link href="/about" onClick={() => setOpen(false)}>About Us</Link>
-                    <Link href="/services" onClick={() => setOpen(false)}>Services</Link>
+
+                    {/* SERVICES ACCORDION */}
+                    <div className="flex flex-col">
+                        <button
+                            onClick={() => setShowServices(!showServices)}
+                            className="flex justify-between items-center w-full"
+                        >
+                            Services <IoIosArrowDown
+                                className={`transition-transform ${showServices ? "rotate-180" : ""}`} />
+                        </button>
+
+                        {showServices && (
+                            <div className="pl-4 mt-3 flex flex-col space-y-3 text-[16px] text-gray-700">
+                                <Link href="/service/dj-for-school" onClick={() => setOpen(false)}>DJ Services</Link>
+                                <Link href="/service/wedding" onClick={() => setOpen(false)}>Wedding</Link>
+                                <Link href="/service/party" onClick={() => setOpen(false)}>Party</Link>
+                                <Link href="/service/corporate-events" onClick={() => setOpen(false)}>Corporate Events</Link>
+                            </div>
+                        )}
+                    </div>
+
                     <Link href="/gallery" onClick={() => setOpen(false)}>Gallery</Link>
-                    <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
+                    <Link href="/blogs" onClick={() => setOpen(false)}>Blog</Link>
                     <Link href="/contact" onClick={() => setOpen(false)}>Contact Us</Link>
 
-                    <button className="w-full mt-4 py-2 border border-[#4dd2ff] text-[#4dd2ff] rounded-full">
+                    <button className="w-[200px] mt-4 py-2 border border-[#4dd2ff] text-[#4dd2ff] rounded-full">
                         Book Now
                     </button>
 
-                    <button className="w-full py-2 bg-[#4df5ff] text-black rounded-full">
+                    <button className="w-[200px] py-2 bg-[#4df5ff] text-black rounded-full">
                         Call Now
                     </button>
-
                 </div>
             </div>
+
 
 
         </nav>

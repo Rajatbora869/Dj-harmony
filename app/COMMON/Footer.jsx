@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-[1450px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-3 gap-12">
 
         {/* LOGO */}
-        <div className="flex flex-col items-center md:items-start">
+        <div className="flex flex-col  md:items-start">
           <img
             src="https://res.cloudinary.com/dal5dlztv/image/upload/v1764157895/Group_19616_gzveud.png"
             alt="logo"
