@@ -4,7 +4,7 @@ import React from 'react'
 function Values() {
     return (
         <div>
-            <section className="w-full bg-[#F5F5F5] py-20">
+            <section className="w-full bg-[#F5F5F5] lg:py-20 py-10 ">
                 <div className="max-w-[1420px] mx-auto px-6">
 
                     {/* Title */}

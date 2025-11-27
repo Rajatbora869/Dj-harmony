@@ -61,7 +61,7 @@ export default function BlogSection() {
     const currentBlogs = blogs.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <section className="w-full bg-[#190224] py-0 px-4 lg:pl-16 lg:pr-0">
+        <section className="w-full bg-[#190224] lg:py-0 lg:px-4 lg:pl-16 lg:pr-0 py-7 px-5">
 
             {/* THREE COLUMN GRID — LEFT | LINE | RIGHT */}
             <div className="max-w-[1420] m-auto grid grid-cols-1 lg:grid-cols-[2fr_1px_1fr] gap-10">

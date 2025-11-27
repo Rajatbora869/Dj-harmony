@@ -12,7 +12,7 @@ export default function HomeAbout() {
     ];
 
     return (
-        <section className="w-full bg-[#eef6f8] py-20">
+        <section className="w-full bg-[#eef6f8] lg:py-20 py-10">
             <div className=" mx-auto lg:pl-18 lg:pr-0 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center px-6 pr-6">
 
 
