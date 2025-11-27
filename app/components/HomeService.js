@@ -23,32 +23,42 @@ export default function HomeServices() {
       desc: "The citation ceremony at RVS was graced by our chief guest, Dr.Amna Mirza, an eminent academician, author, entrepreneur and curator of ideas. She motivated the students with her wise words and wished them a bright future.",
       img: "https://res.cloudinary.com/dal5dlztv/image/upload/v1764149841/Rectangle_234_lkwaph.png",
     },
+     {
+      title: "Harmony Wedding Dj",
+      desc: "The citation ceremony at RVS was graced by our chief guest, Dr.Amna Mirza, an eminent academician, author, entrepreneur and curator of ideas. She motivated the students with her wise words and wished them a bright future.",
+      img: "https://res.cloudinary.com/demo/image/upload/wedding.jpg",
+    },
+    {
+      title: "Birthday Parties",
+      desc: "The citation ceremony at RVS was graced by our chief guest, Dr.Amna Mirza, an eminent academician, author, entrepreneur and curator of ideas. She motivated the students with her wise words and wished them a bright future.",
+      img: "https://res.cloudinary.com/dal5dlztv/image/upload/v1764149841/Rectangle_234_lkwaph.png",
+    },
   ];
-
+const customLeft = {
+  2: "left-[40%]",  // 3rd card
+  3: "left-[60%]"   // 4th card
+};
   return (
     <section className="w-full bg-[#F7EFF2] py-20">
 
-      {/* Heading */}
       <div className="text-center mb-16">
         <h3 className="text-[32px] italic text-black">Service</h3>
         <h2 className="text-[42px] font-extrabold text-black">Our Services</h2>
       </div>
 
-      {/* ACCURATE STAGGERED LAYOUT */}
-      <div className="max-w-[1300px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-40">
+      <div className="max-w-[1300px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-15">
 
         {services.map((service, index) => (
-          <div 
+          <div
             key={index}
-            className={`relative ${
-              index === 1 ? "md:mt-28" : ""   // ONLY second item moves down (same as screenshot)
-            } ${
-              index === 3 ? "md:-mt-16" : "" // Align last item slightly up to match screenshot
-            }`}
+            className={`
+              relative
+              ${index % 2 === 0 ? "md:mt-18" : "md:mt-0"}
+            `}
           >
-            
-            {/* IMAGE BOX */}
-            <div className="w-full h-[300px] md:h-[320px] relative rounded-xl overflow-hidden shadow-md">
+
+            {/* IMAGE */}
+            <div className="w-full h-[300px] md:h-[330px] relative rounded-xl overflow-hidden shadow-lg">
               <Image
                 src={service.img}
                 alt={service.title}
@@ -57,8 +67,22 @@ export default function HomeServices() {
               />
             </div>
 
-            {/* FLOATING CARD */}
-            <div className="absolute left-1/2 -translate-x-1/2 -bottom-24 bg-white w-[85%] md:w-[78%] rounded-xl shadow-xl p-6">
+            {/* FIXED PERFECT DESCRIPTION POSITION */}
+            <div
+             className={`
+  absolute -translate-x-1/2
+  ${
+    customLeft[index] 
+      ? customLeft[index] 
+      : index % 2 !== 0 
+        ? "left-60" 
+        : "left-[60%]"
+  }
+  ${index % 2 !== 0 ? "-bottom-10" : "-bottom-24"}
+  bg-white w-[88%] md:w-[80%]
+  rounded-xl shadow-xl p-6
+`}
+            >
               <h3 className="text-[20px] font-semibold mb-2 text-black">
                 {service.title}
               </h3>
@@ -66,6 +90,7 @@ export default function HomeServices() {
                 {service.desc}
               </p>
             </div>
+
           </div>
         ))}
 
