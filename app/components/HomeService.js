@@ -23,7 +23,7 @@ export default function HomeServices() {
       desc: "The citation ceremony at RVS was graced by our chief guest, Dr.Amna Mirza, an eminent academician, author, entrepreneur and curator of ideas. She motivated the students with her wise words and wished them a bright future.",
       img: "https://res.cloudinary.com/dal5dlztv/image/upload/v1764149841/Rectangle_234_lkwaph.png",
     },
-     {
+    {
       title: "Harmony Wedding Dj",
       desc: "The citation ceremony at RVS was graced by our chief guest, Dr.Amna Mirza, an eminent academician, author, entrepreneur and curator of ideas. She motivated the students with her wise words and wished them a bright future.",
       img: "https://res.cloudinary.com/demo/image/upload/wedding.jpg",
@@ -34,10 +34,10 @@ export default function HomeServices() {
       img: "https://res.cloudinary.com/dal5dlztv/image/upload/v1764149841/Rectangle_234_lkwaph.png",
     },
   ];
-const customLeft = {
-  2: "left-[40%]",  // 3rd card
-  3: "left-[60%]"   // 4th card
-};
+  const customLeft = {
+    2: "left-[40%]",  // 3rd card
+    3: "left-[60%]"   // 4th card
+  };
   return (
     <section className="w-full bg-[#F7EFF2] py-20">
 
@@ -67,21 +67,27 @@ const customLeft = {
               />
             </div>
 
-            {/* FIXED PERFECT DESCRIPTION POSITION */}
+
             <div
-             className={`
-  absolute -translate-x-1/2
-  ${
-    customLeft[index] 
-      ? customLeft[index] 
-      : index % 2 !== 0 
-        ? "left-60" 
-        : "left-[60%]"
-  }
-  ${index % 2 !== 0 ? "-bottom-10" : "-bottom-24"}
-  bg-white w-[88%] md:w-[80%]
-  rounded-xl shadow-xl p-6
-`}
+              className={`
+    absolute 
+    /* ---- DESKTOP ORIGINAL (same as your code) ---- */
+    ${customLeft[index]
+                  ? customLeft[index]
+                  : index % 2 !== 0
+                    ? "md:left-60"
+                    : "md:left-[60%]"
+                }
+    ${index % 2 !== 0 ? "md:-bottom-10" : "md:-bottom-24"}
+    md:-translate-x-1/2
+
+    /* ---- MOBILE RESPONSIVE FIX ---- */
+    left-1/2 -translate-x-1/2   /* mobile center */
+    bottom-[-60px]              /* mobile spacing */
+
+    bg-white w-[90%] md:w-[80%]
+    rounded-xl shadow-xl p-6
+  `}
             >
               <h3 className="text-[20px] font-semibold mb-2 text-black">
                 {service.title}
@@ -90,6 +96,7 @@ const customLeft = {
                 {service.desc}
               </p>
             </div>
+
 
           </div>
         ))}
