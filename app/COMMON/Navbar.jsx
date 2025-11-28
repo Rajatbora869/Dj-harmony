@@ -27,6 +27,7 @@ export default function Navbar() {
                 {/* LEFT SIDE — Logo + Menu */}
                 <div className="flex items-center gap-10">
                     {/* Logo */}
+                    <Link href="/">
                     <Image
                         src="https://res.cloudinary.com/dd9tagtiw/image/upload/v1764136265/6fbbaed1ecec6d5cfb354fcd0454b0eeafdd1454_i28ozg.png"
                         alt="Logo"
@@ -34,6 +35,7 @@ export default function Navbar() {
                         height={85}
                         className="object-contain"
                     />
+                    </Link>
 
                     {/* Desktop Menu */}
                     <ul className="desktop-menu hidden lg:flex items-center gap-8 text-black font-medium text-[18px]">

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaInstagram } from "react-icons/fa";
 import { IoMdCall, IoMdMail,  } from "react-icons/io";
 
@@ -9,11 +10,13 @@ export default function Footer() {
 
         {/* LOGO */}
         <div className="flex flex-col  md:items-start">
+        <Link href="/">
           <img
             src="https://res.cloudinary.com/dal5dlztv/image/upload/v1764157895/Group_19616_gzveud.png"
             alt="logo"
             className="w-27 h-27 object-contain"
           />
+           </Link>
         </div>
 
         {/* QUICK LINK + SERVICES */}
